@@ -1,0 +1,155 @@
+
+
+@{
+    Layout = "Ogr_Login_Layout";
+}
+
+@section appHeader{
+    <div class="appHeader bg-warning text-light">
+        <div class="pageTitle text-center">Tasarı Akademi <br> Şenol Hoca Rehberlik</div>
+    </div>
+}
+
+
+<div class="login-form mt-1" style="margin-top: 5rem !important;">
+    <div class="section">
+        <img src="~/images/icon/logo.png" alt="image" class="form-image">
+    </div>
+    <div class="section mt-1">
+        <h1>Hoş Geldiniz</h1>
+        <h4>ÖN KAYIT İŞLEMİ İÇİN LÜTFEN AÇILAN EKRANDAKİ FORMU <br /> EKSİKSİZ DOLDURUNUZ. <br /> <b class="text-danger"> Telefon Numaranızı 05XXXXXXXXX 11 hane olacak şekilde Girdiğinizden Emin Olun.</b> </h4>
+    </div>
+    <div class="section mt-1">
+        <form action="~/Onkayit/LoginAction/" enctype="multipart/form-data" method="post" onsubmit="return kontrolEt()">
+            <input name="Ad" type="text" placeholder="Ad" class="form-control mt-1" required/>
+            <input name="Soyad" type="text" placeholder="Soyad" class="form-control mt-1" required/>
+            <input id="telefon" name="Telefon" type="text" placeholder="Telefon" class="form-control mt-1" required/>
+            <input id="txtOgrOkulAd" name="OkulSTR" type="text" placeholder="Okul Adı" class="form-control mt-1"/>
+            <select id="txtOgrSinif" class="form-control mt-1" required="" name="Sinif">
+                <option value="">Sınıf Seçiniz</option>
+                <option value="Mezun">Mezun</option>
+                <option value="12.Sınıf">12.Sınıf</option>
+                <option value="11.Sınıf">11.Sınıf</option>
+                <option value="10.Sınıf">10.Sınıf</option>
+                <option value="9.Sınıf">9.Sınıf</option>
+                <option value="8.Sınıf">8.Sınıf</option>
+                <option value="7.Sınıf">7.Sınıf</option>
+                <option value="6.Sınıf">6.Sınıf</option>
+
+            </select>
+            <button type="submit" class="btn btn-warning w-100 mt-1">Kayıt</button>
+        </form>
+    </div>
+    <div class="section mt-1">
+        <h4>
+            <br /> <b class="text-warning">Formu Doldurduktan Sonra Açılan Ekrandan Katılmak İstediğiniz Deneme Sınavı Seansını Seçerek Ön Başvuru Buttonuna Tıklayarak Başvurunuzu İletebilirsiniz</b>
+            <br /> <b class="text-warning"><a href="whatsapp://send?text=Merhaba, Deneme Sınavlarınız Hakkında Almak İstiyorum&phone=+905050370309" class="btn btn-success">WhatsApp Üzerinden Detaylı Bilgi İçin Tıklayın</a></b>
+            </h4>
+    </div>
+
+    </div>
+@section ogrScripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js" integrity="sha512-d4KkQohk+HswGs6A1d6Gak6Bb9rMWtxjOa0IiY49Q3TeFd5xAzjWXDCBW9RS7m86FQ4RzM2BdHmdJnnKRYknxw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+                
+                function ogrOnKayit() {
+                    Swal.fire({
+                        title: 'İşlemi Onaylıyor musunuz?',
+                        text: "Kaydınız Alınarak Seans Listesine Yönlendirileceksiniz",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Evet Onaylıyorum!',
+                        cancelButtonText: 'Hayır'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                                var ad = $("#txtogrAd").val();
+                                var soyad = $("#txtogrSoyad").val();
+                                var telefon = $("#txtogrTelefon").val();
+                                var katID = $("#drpogrKategori option:selected").val();
+                                var okul = $("#txtOgrOkulAd").val();
+                                var sinif = $("#txtOgrSinif").val();
+                                var obj = {
+                                    okulId: 0,
+                                    KategoriId: katID,
+                                    Ad: ad,
+                                    Soyad: soyad,
+                                    Telefon: telefon,
+                                    Sinif: sinif,
+                                    OkulSTR: okul
+                                }
+                                $.ajax({
+                                url: '/OgrAuth/ogrControl/',
+                                type: 'Post',
+                                data: { telno: telefon },
+                                dataType: 'json',
+                                success: function (data) {
+                                    if (data)
+                                    {
+                                        $.ajax({
+                                            url: '/ogrAuth/ogrOnKayit/',
+                                            type: 'Post',
+                                            data: { model: obj },
+                                            dataType: 'json',
+                                            success: function (data) {
+                                                window.location.href = '/OgrMobil/guncelSeanslar';
+            
+                                            }
+                                        });
+                                    }
+
+                                }
+                            });
+
+                        }
+                    });
+
+                }
+        function login() {
+            var ktel = $("#txtTel").val();
+            var kPass = $("#txtSifre").val();
+            $.ajax({
+                    url: '/ogrAuth/signIn/',
+                type: 'Post',
+                dataType: 'json',
+                data: { userName: ktel, pass: kPass },
+                success: function (data) {
+                    var uyeOturum = jQuery.parseJSON(data.uyeOturum);
+                    if (uyeOturum == 1) {
+                        Swal.fire(
+                            {
+                                title: data.msgTitle,
+                                text: data.msg,
+                                icon: data.msgIcon,
+                                showCancelButton: false,
+                                showConfirmButton: false,
+                                confirmButtonText: 'Tamam',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false
+                            }
+                        )
+                        setTimeout(
+                            function () {
+                                window.location.href = "/OgrMobil/guncelSeanslar";
+
+                            }, 3000);
+                    } else if (uyeOturum == 0) {
+                        Swal.fire(
+                            {
+                                title: data.msgTitle,
+                                text: data.msg,
+                                icon: data.msgIcon,
+                                confirmButtonText: 'Tamam',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false
+                            }
+                        )
+                    }
+                },
+                error: function () {
+                }
+            });
+}
+            </script>
+}
