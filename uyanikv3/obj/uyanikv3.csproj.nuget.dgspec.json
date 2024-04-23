@@ -1,31 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/beratceylan/Desktop/tasarisinavsistemi/uyanikv3/uyanikv3.csproj": {}
+    "/Users/beratceylan/RiderProjects/tasarisinavapp/uyanikv3/uyanikv3.csproj": {}
   },
   "projects": {
-    "/Users/beratceylan/Desktop/tasarisinavsistemi/uyanikv3/uyanikv3.csproj": {
+    "/Users/beratceylan/RiderProjects/tasarisinavapp/uyanikv3/uyanikv3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/beratceylan/Desktop/tasarisinavsistemi/uyanikv3/uyanikv3.csproj",
+        "projectUniqueName": "/Users/beratceylan/RiderProjects/tasarisinavapp/uyanikv3/uyanikv3.csproj",
         "projectName": "uyanikv3",
-        "projectPath": "/Users/beratceylan/Desktop/tasarisinavsistemi/uyanikv3/uyanikv3.csproj",
+        "projectPath": "/Users/beratceylan/RiderProjects/tasarisinavapp/uyanikv3/uyanikv3.csproj",
         "packagesPath": "/Users/beratceylan/.nuget/packages/",
-        "outputPath": "/Users/beratceylan/Desktop/tasarisinavsistemi/uyanikv3/obj/",
+        "outputPath": "/Users/beratceylan/RiderProjects/tasarisinavapp/uyanikv3/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/beratceylan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net8.0"
         ],
         "sources": {
-          "/Users/beratceylan/.dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -36,8 +35,8 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "ClosedXML": {
               "target": "Package",
@@ -107,20 +106,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.osx-arm64",
-              "version": "[7.0.14, 7.0.14]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[7.0.14, 7.0.14]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -129,7 +114,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/Users/beratceylan/.dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/Users/beratceylan/.dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

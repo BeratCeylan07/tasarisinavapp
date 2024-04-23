@@ -3450,3 +3450,6 @@
 /Users/beratceylan/Desktop/tasarisinavsistemi/uyanikv3/bin/Release/net7.0/SixLabors.Fonts.dll
 /Users/beratceylan/Desktop/tasarisinavsistemi/uyanikv3/bin/Release/net7.0/System.IO.Packaging.dll
 /Users/beratceylan/Desktop/tasarisinavsistemi/uyanikv3/bin/Release/net7.0/XLParser.dll
+/Users/beratceylan/RiderProjects/tasarisinavapp/uyanikv3/obj/Release/net7.0/uyanikv3.dll
+/Users/beratceylan/RiderProjects/tasarisinavapp/uyanikv3/obj/Release/net7.0/refint/uyanikv3.dll
+/Users/beratceylan/RiderProjects/tasarisinavapp/uyanikv3/obj/Release/net7.0/uyanikv3.pdb

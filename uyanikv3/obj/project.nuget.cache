@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hTNvnX9PpSJ84zoLHtPL63GGADlPrlvIud91FBC0iF9y2Q5cNWFeyg/xtwOMtwottaCPpqiuT7uVQV5/Y/UmzQ==",
+  "dgSpecHash": "hu4P+m4Ne34ZE+A971GUw0aAXRP0asiO/j0hgB/AfoGY+EujCbfBw2TVeM31CekQ0//KPfrFmNqaWtsVK8wHvw==",
   "success": true,
-  "projectFilePath": "/Users/beratceylan/Desktop/tasarisinavsistemi/uyanikv3/uyanikv3.csproj",
+  "projectFilePath": "/Users/beratceylan/RiderProjects/tasarisinavapp/uyanikv3/uyanikv3.csproj",
   "expectedPackageFiles": [
     "/Users/beratceylan/.nuget/packages/autofac/4.9.4/autofac.4.9.4.nupkg.sha512",
     "/Users/beratceylan/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
@@ -246,10 +246,7 @@
     "/Users/beratceylan/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/Users/beratceylan/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512",
     "/Users/beratceylan/.nuget/packages/tweetinviapi/5.0.4/tweetinviapi.5.0.4.nupkg.sha512",
-    "/Users/beratceylan/.nuget/packages/xlparser/1.5.2/xlparser.1.5.2.nupkg.sha512",
-    "/Users/beratceylan/.nuget/packages/microsoft.netcore.app.ref/7.0.14/microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
-    "/Users/beratceylan/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.14/microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
-    "/Users/beratceylan/.nuget/packages/microsoft.netcore.app.host.osx-arm64/7.0.14/microsoft.netcore.app.host.osx-arm64.7.0.14.nupkg.sha512"
+    "/Users/beratceylan/.nuget/packages/xlparser/1.5.2/xlparser.1.5.2.nupkg.sha512"
   ],
   "logs": []
 }

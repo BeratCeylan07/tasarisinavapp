@@ -114,7 +114,8 @@ namespace uyanikv3.Controllers
                 }
                 else
                 {
-                    int franchParameter = (int)HttpContext.Session.GetInt32("kutuphaneID");
+                    int franchParameter = 0;
+                    franchParameter = (int)HttpContext.Session.GetInt32("kutuphaneID");
                     uyeOturum = 0;
                     msgIcon = "warning";
                     msgTitle = "Kullanıcı Bulunamadı";
@@ -124,8 +125,9 @@ namespace uyanikv3.Controllers
             }
             else
             {
-                int franchParameter = (int)HttpContext.Session.GetInt32("kutuphaneID");
-                                        uyeOturum = 0;
+                int franchParameter = 0;
+                franchParameter = (int)HttpContext.Session.GetInt32("kutuphaneID");
+                    uyeOturum = 0;
                     msgIcon = "warning";
                     msgTitle = "Kullanıcı Bulunamadı";
                     msg = "Giriş Bilgileri Hatalı";

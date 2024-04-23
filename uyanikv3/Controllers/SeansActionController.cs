@@ -877,6 +877,7 @@ public class SeansActionController : Controller
                 seans.SeansUcret = model.SeansUcret;
                 seans.Kontenjan = model.Kontenjan;
                 seans.DenemeId = model.DenemeId;
+                seans.Sinavyeri = model.sinavYeri;
                 context.Entry(seans).State = EntityState.Modified;
                 context.SaveChanges();
                 MesajBaslik = "İşlem Başarılı";
