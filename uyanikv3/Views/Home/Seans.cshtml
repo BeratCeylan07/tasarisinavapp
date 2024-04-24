@@ -797,8 +797,10 @@
 
 
     @section Scripts{
-        <script>let toplamDeneme = [];
-
+        <script>
+            let toplamDeneme = [];
+            var jsondata;
+            var seansogrlistprintarr;
             $(document).ready(function () {
 
                 $('#openBtn').click(() => $('#myModal').modal({
@@ -1410,11 +1412,12 @@
                         ogrlistforseans(seansid);
                         seansbildirimlist(seansid);
                         let seansdetaybuttons = `
-                                                      <div class="col">
+                                                      <div class="col-12 mt-2">
                                                           <button type="button" data-toggle="modal" data-target="#mdlseanssettings" class="btn btn-primary">Ayarlar</button>
                                                           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#mdlSeansBildirimler">Bildirimler</button>
                                                           <button type="button" onclick="seansiptal(${jsondata.Id})" class="btn btn-danger">Seans İptal</button>
-                                                          <button type="button" data-toggle="modal" data-target="#mdlOgrSeansAktarim" class="btn btn-outline-warning">Öğrenci Seans Aktarım</button>
+                                                          <button type="button" data-toggle="modal" data-target="#mdlOgrSeansAktarim" class="btn btn-warning">Öğrenci Seans Aktarım</button>
+                                                          <button type="button" class="btn btn-secondary" onclick="seansOgrListPrint('${jsondata.KategoriBaslik}','${jsondata.yayinBaslik}','${jsondata.kitapcikBaslik}','${jsondata.KayitliOgrenci}','${jsondata.KatilimSaglayanToplam}','${jsondata.onkayitliOgrenci}')"> Öğrenci Listesi Yazdır</button>
                                                       </div>`;
                         $("#btnseansdetay").html(seansdetaybuttons);
                         let seanskayitactions = ``;
@@ -1429,6 +1432,46 @@
                     }
                 });
 
+            }
+            function seansOgrListPrint(kategori,yayin,denemead,toplamkayittoplam,katilimsaglayantoplam,onkayittoplam)
+            {
+                let printcustomHeader = `
+                    <div style="display: grid;
+                      grid-template-columns: repeat(3, 1fr);
+                      gap: 10px; height: 100px !important; margin-bottom:4rem !important;">
+                        <div style="padding:10px;">
+                        <img src="/assets/logo.png" width="100px" height="auto;"/>
+
+                        </div>
+                        <div style="padding:10px; text-align: center; margin-right:auto; margin-left:auto;">
+                            <table border="0" style="text-align: center;">
+                                <tr><td style="text-align: center;"><b>Oturum Bilgileri</b></td></tr>
+                                <tr><td style="text-align: center;"><b>${kategori}</b></td></tr>
+                                <tr><td style="text-align: center;"><b>${yayin}</b></td></tr>
+                                <tr><td style="text-align: center;"><b>${denemead}</b></td></tr>
+                            </table>
+                         </div>
+                        <div style="padding:10px; text-align: center; margin-right:auto; margin-left:auto;">
+                         <table border="0" style="text-align: center;">
+                                <tr><td style="text-align: center;"><b>Oturum İstatistikleri</b></td></tr>
+                                <tr><td style="text-align: center;"><b>Yoklama Bekleyen: ${toplamkayittoplam}</b></td></tr>
+                                <tr><td style="text-align: center;"><b>Katılım Sağlayan: ${katilimsaglayantoplam}</b></td></tr>
+                                <tr><td style="text-align: center;"><b>Ön kayıt: ${onkayittoplam}</b></td></tr>
+                            </table>
+                        </div>
+                </div>`;
+                printJS({
+                    printable: seansogrlistprintarr,
+                    properties: [
+                        { field: 'Ad', displayName: 'Ad'},
+                        { field: 'Soyad', displayName: 'Soyad'},
+                        { field: 'Telefon', displayName: 'Telefon'},
+                        { field: 'DurumSTR', displayName: 'Yoklama Durumu'},
+                        { field: 'YoklamaDurum', displayName: 'Yoklama Durumu'}
+                    ],                  
+                    type: 'json',
+                    header: printcustomHeader
+                })
             }
             function seanskartref(seansid) {
                 $.ajax({
@@ -1451,8 +1494,10 @@
                         var dt = jsondata.Tarih.toString().replace("T00:00:00", "").split('-');
                         console.log(dt);
                         var date = dt[0] + "-" + dt[1] + "-" + dt[2];
-
                         $("#txtDenemeSeansTarihSetting").val(date);
+
+
+        
 
 
 
@@ -1465,7 +1510,9 @@
                         $("#toplamayitli").html(jsondata.KayitliOgrenci);
                         $("#kalankontenjan").html("");
                         $("#kalankontenjan").html(jsondata.GuncelKontenjan);
-                        $("#toplamkatilimsaglayan").html("");
+                        $("#toplamkatilimsaglayan"
+                            
+                        ).html("");
                         $("#toplamkatilimsaglayan").html(jsondata.KatilimSaglayanToplam);
                         $("#toplamkitapcikteslimalan").html("");
                         $("#toplamkitapcikteslimalan").html(jsondata.KitapcikAlanToplam);
@@ -1475,12 +1522,13 @@
                         let yayinfoto = `<img style="width: 100% !important; height: 300px !important;" class="card-img-top" src="${jsondata.yayinLogo}">`;
                         $("#yayinfotoarea").html(yayinfoto);
                         ogrlistforseans(seansid);
+                      
                         seansbildirimlist(seansid);
                         let seansdetaybuttons = `  <div class="col-md-3 col-sm-12"> <button type="button" onclick="seansiptal(${jsondata.Id})" class="btn btn-danger ">Seans İptal</button></div>
                                                                                           <div class="col-md-3 col-sm-12">  <button type="button" data-toggle="modal" data-target="#mdlseanssettings" class="btn btn-primary ">Ayarlar</button></div>
                                                                                            <div class="col-md-3 col-sm-12"> <button type="button" class="btn btn-info " data-toggle="modal" data-target="#mdlSeansBildirimler">Bildirimler</button></div>
                                                                                        <div class="col-md-3 col-sm-12"> <button type="button" class="btn btn-secondary " data-toggle="modal" data-target="#mdlogrlistforseansonkayit">Ön Kayıt Talepleri</button></div>
-                                                                                            <div class="col-md-3 col-sm-12"><a href="#" class="btn btn-warning btn-block">Öğrenci Kayıt</a></div>`;
+                                                                                            <div class="col-md-3 col-sm-12"><button type="button" class="btn btn-warning btn-block" onclick=""> Öğrenci Kayıt</button></div>`;
                         $("#btnseansdetay").html(seansdetaybuttons);
                         let seanskayitactions = ``;
                         if (jsondata.Durum == 4) {
@@ -1495,6 +1543,7 @@
                 });
 
             }
+            
             function seanskayitaktifpasif(seansid, type) {
                 var islemonay = "İşlem Onayı";
                 var mesaj = "";
@@ -1533,8 +1582,6 @@
                             }
                         });
                     }
-
-
                 });
 
             }
@@ -1697,7 +1744,24 @@
                     data: { seansid: seansid, param: param },
                     success: function (data) {
                         console.log(data);
-                        var jsondata = jQuery.parseJSON(data.jsonresult);
+                        jsondata = jQuery.parseJSON(data.jsonresult);
+                        seansogrlistprintarr = jQuery.parseJSON(data.jsonresult);
+                        seansogrlistprintarr.forEach(function(item) {
+                            if (item.Durum === 0) {
+                                item.DurumSTR = "Ön Kayıt";
+                            } else if (item.Durum === 1) {
+                                item.DurumSTR = "Yoklama Bekliyor";
+                            } else if (item.Durum === 2) {
+                                item.DurumSTR = "Kitapçık Aldı";
+                            } else {
+                                item.DurumSTR = "Bilinmeyen Durum";
+                            }
+                        });
+                        seansogrlistprintarr.forEach(function (item){
+                            item.YoklamaDurum = "";
+                        });
+                        
+
                         let ogrlistforseans = ``;
                         let ogrlistforseansonkayit = ``;
                         $("#seansogrlistbody").html(ogrlistforseans);

@@ -1125,6 +1125,14 @@
       "PackagePath": "staticwebassets/assets/logo.png"
     },
     {
+      "Id": "/Users/beratceylan/RiderProjects/tasarisinavapp/uyanikv3/wwwroot/assets/print/print.min.css",
+      "PackagePath": "staticwebassets/assets/print/print.min.css"
+    },
+    {
+      "Id": "/Users/beratceylan/RiderProjects/tasarisinavapp/uyanikv3/wwwroot/assets/print/print.min.js",
+      "PackagePath": "staticwebassets/assets/print/print.min.js"
+    },
+    {
       "Id": "/Users/beratceylan/RiderProjects/tasarisinavapp/uyanikv3/wwwroot/assets/sass/_body.scss",
       "PackagePath": "staticwebassets/assets/sass/_body.scss"
     },

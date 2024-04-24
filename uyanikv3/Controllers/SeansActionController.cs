@@ -296,7 +296,7 @@ public class SeansActionController : Controller
                     DenemeId = x.DenemeId,
                     Kontenjan = x.Kontenjan,
                     GuncelKontenjan = x.Kontenjan - x.SeansOgrSets.Where(c => c.Durum != 0).Count(),
-                    KayitliOgrenci = x.SeansOgrSets.Count(),
+                    KayitliOgrenci = x.SeansOgrSets.Where(w => w.Durum != 0).Count(),
                     onkayitliOgrenci = x.SeansOgrSets.Where(q => q.Durum == 0).Count(),
                     SeansGun = CultureInfo.CurrentCulture.DateTimeFormat.DayNames[(int)x.Tarih.DayOfWeek],
                     Tarih = x.Tarih,
@@ -535,6 +535,7 @@ public class SeansActionController : Controller
                     Durum = S.Durum,
                     sinavYeri = S.Sinavyeri,
                     SeansUcret = S.SeansUcret,
+                    onkayitliOgrenci = S.SeansOgrSets.Where(x => x.Durum == 0).Count(),
                     yayinLogo = S.Deneme.Yayin.Logo,
                     KitapcikAlanToplam = S.SeansOgrSets.Where(x => x.Durum == 4).Count(),
                     KatilimSaglayanToplam = S.SeansOgrSets.Where(x => x.Durum == 2).Count(),
@@ -650,7 +651,6 @@ public class SeansActionController : Controller
                         QRKOD = s.Qr,
                         Durum = s.Durum,
                         denemeAd = "Oturum: " + s.Seans.Deneme.Yayin.YayinBaslik + " " + s.Seans.Deneme.Kategori.AltKategoriBaslik + " " + s.Seans.Deneme.DenemeBaslik + " " + s.Seans.Tarih.ToString("dd.MM.yyyy") + " / " + s.Seans.Saat,
-
                         Ktarih = s.SeansKayitTarih,
                         KtarihSTR = s.SeansKayitTarih.ToString("dd.MM.yyyy - dddd")
                     }).OrderBy(o => o.Ad).ToList();
